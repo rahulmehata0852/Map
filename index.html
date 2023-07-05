@@ -30,7 +30,8 @@
             const LNG = coords.longitude
 
             fetch(` https://api.opencagedata.com/geocode/v1/json?q=${LAT}+${LNG}&key=${API_KEY}`)
-                .then(response => response.json())
+                .then(response =>
+                    response.json())
                 .then(data => {
                     console.log(data)
                     const {
@@ -49,6 +50,9 @@
 
 
         const handleLocation = () => {
+            document.getElementById("root").innerHTML =
+                `<div class="spinner-border text-primary"></div>
+`
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(getLocation, handleErr, { enableHighAccuracy: true })
             } else {
